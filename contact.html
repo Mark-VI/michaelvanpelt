@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Michael VanPelt, DMA — Princeton, NJ</title>
+<meta name="description" content="Private saxophone and clarinet lessons in Princeton, NJ from Michael VanPelt, DMA, former Westminster Conservatory faculty. Beginners through advancing players, plus saxophone repair.">
+<meta property="og:title" content="Contact">
+<meta property="og:description" content="Private saxophone and clarinet lessons in Princeton, NJ from Michael VanPelt, DMA, former Westminster Conservatory faculty. Beginners through advancing players, plus saxophone repair.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://michaelvanpelt.com/contact.html">
+<link rel="canonical" href="https://michaelvanpelt.com/contact.html">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a class="brand" href="index.html" style="text-decoration:none;">Michael VanPelt, DMA<span>Saxophone and Clarinet Lessons, Saxophone Repair</span></a>
+    <nav>
+      <a class="tab-btn" href="index.html">Home</a>
+      <a class="tab-btn" href="bio.html">Bio</a>
+      <a class="tab-btn" href="teaching.html">Teaching</a>
+      <a class="tab-btn" href="repair.html">Repair</a>
+      <a class="tab-btn active" href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="block">
+<span class="eyebrow">Contact</span>
+<h2 style="font-size:1.7rem; margin-bottom:16px;">Get in touch</h2>
+<div style="margin-top:8px; max-width:480px;">
+<form action="https://formspree.io/f/mvzekybe" class="contact-form" method="POST">
+<input name="_subject" type="hidden" value="New Inquiry — website"/>
+<select name="Inquiry Type" required="">
+<option disabled="" selected="" value="">What are you reaching out about?</option>
+<option value="Lessons">Lessons</option>
+<option value="Repair">Instrument repair</option>
+</select>
+<input name="Name" placeholder="Name" required="" type="text"/>
+<input name="email" placeholder="Email" required="" type="email"/>
+<input name="Phone" placeholder="Phone (optional)" type="tel"/>
+<textarea name="Message" placeholder="Tell me a bit about what you're looking for" required="" rows="4"></textarea>
+<button class="btn btn-primary" type="submit">Send Inquiry</button>
+<p class="form-status"></p>
+</form>
+</div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Michael VanPelt, DMA — Saxophone and Clarinet Lessons, Saxophone Repair — Princeton, NJ</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.contact-form').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const status = form.querySelector('.form-status');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      status.classList.remove('error');
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.querySelectorAll('input, textarea').forEach(f => f.style.display = 'none');
+          btn.style.display = 'none';
+          status.textContent = "Thanks — I'll get back to you soon.";
+          status.style.display = 'block';
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (err) {
+        status.textContent = 'Something went wrong — please try again.';
+        status.classList.add('error');
+        status.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Send Inquiry';
+      }
+    });
+  });
+</script>
+
+</body></html>
