@@ -110,6 +110,13 @@
   .btn-ghost{border-color:var(--hair); color:var(--pearl);}
   .btn-ghost:hover{border-color:var(--brass); color:var(--brass-bright);}
 
+  .content-photo{
+    max-width:360px; margin:8px auto 32px;
+    border-radius:4px; overflow:hidden; border:1px solid var(--hair);
+    box-shadow:0 24px 60px rgba(0,0,0,0.35);
+  }
+  .content-photo img{width:100%; height:auto; display:block;}
+
   .hero-photo{
     width:100%; max-width:320px; justify-self:center;
     border-radius:4px; overflow:hidden; border:1px solid var(--hair);
